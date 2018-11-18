@@ -14,7 +14,8 @@ namespace ContactsApp
         /// <summary>
         /// Путь к файлу.
         /// </summary>
-        private static string stringMyDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "ContactsApp.notes";
+        private static string stringMyDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                                      "/ContactsApp" + "/ContactsApp.notes";
 
         /// <summary>
         /// Метод, выполняющий запись в файл
@@ -25,12 +26,14 @@ namespace ContactsApp
             // Экземпляр сериалиатора
             JsonSerializer serializer = new JsonSerializer();
 
-            // Преобразование из string в System.IO.Stream
-            byte[] byteArray = Encoding.UTF8.GetBytes(stringMyDocumentsPath);
-            MemoryStream stream = new MemoryStream(byteArray);
+            //Проверка на папку. Если нет папки ContactsApp, то создаем ее.
+            if(!System.IO.Directory.Exists(stringMyDocumentsPath))
+            {
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                          "/ContactsApp");
+            }
 
-            // Открываем поток для записи в файл с указанием пути
-            using (StreamWriter sw = new StreamWriter(@stream))
+            using (StreamWriter sw = new StreamWriter(stringMyDocumentsPath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 // Вызов сериализатора и передача объекта сериализации
@@ -45,17 +48,15 @@ namespace ContactsApp
         public static Project ProjectDeserialization()
         {
             //Переменная, в которую будет помещен результат десериализации
-            Project project = null;
+            Project project = new Project();
 
             //Экземпляр сериализатора
             JsonSerializer serializer = new JsonSerializer();
 
-            // Преобразование из string в System.IO.Stream
-            byte[] byteArray = Encoding.UTF8.GetBytes(stringMyDocumentsPath);
-            MemoryStream stream = new MemoryStream(byteArray);
+            //Сделаь проверку десeриализации
 
             //Открываем поток для чтения из файла с указанием пути
-            using (StreamReader sr = new StreamReader(@stream))
+            using (StreamReader sr = new StreamReader(stringMyDocumentsPath))
             using (JsonReader reader = new JsonTextReader(sr))
             {
                 //Вызываем десериализацию и явно преобразуем результат в целевой тип данных

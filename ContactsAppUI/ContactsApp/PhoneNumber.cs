@@ -33,16 +33,12 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Вы ввели меньше 11 цифр, введите номер, состоящий из 11 цифр.");
                 }
+                //Иначе присваиваем перменной номер.
                 else
                 {
                     _number = value;
                 }
             }
-        }
-
-        public PhoneNumber()
-        {
-            _number = Number;
         }
     }
 }

@@ -19,24 +19,31 @@ namespace ContactsAppUI
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
 
-
-            //ContactsApp.Contact contact = new ContactsApp.Contact(new PhoneNumber(), "Иван", "Петров", "ivanpetrov@gmail.com", new DateTime(1985, 03, 10), "4526478");
+            //Создаем список контактов.
             Project project = new Project();
+            //Вызываем десериализацию для списка контактов.
+            //Project project = ProjectManager.ProjectDeserialization();
 
+            //Создаем новый контакт.
             Contact contactOne = new Contact();
 
+            //Заполняем поля контакта.
             contactOne.Name = "Anton";
-            contactOne.Family = "Petrov";
+            contactOne.Surname = "Petrov";
             contactOne.DateOfBirth = new DateTime(1985, 11, 25);
             contactOne.PhoneNumber.Number = 78886663322;
             contactOne.Email = "antonpetrov@mail.ru";
             contactOne.IdVk = "15864785";
 
+            //Создаем клон контакта.
             Contact contactTwo = (Contact) contactOne.Clone();
 
+            //Добавляем в список контактов контакт 1.
             project.contacts.Add(contactOne);
+            //Добавляем в список контактов контакт 2.
             project.contacts.Add(contactTwo);
 
+            //Вызываем сериализацию для списка контактов.
             ProjectManager.ProjectSerialization(project);
         }
     }

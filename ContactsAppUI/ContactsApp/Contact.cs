@@ -12,7 +12,7 @@ namespace ContactsApp
         /// <summary>
         /// Фамилия контакта.
         /// </summary>
-        private string _family;
+        private string _surname;
 
         /// <summary>
         /// Имя контакта.
@@ -37,7 +37,7 @@ namespace ContactsApp
         /// <summary>
         /// Телефонный номер контакта.
         /// </summary>
-        private PhoneNumber _phoneNumber;
+        public PhoneNumber _phoneNumber = new PhoneNumber();
 
         /// <summary>
         /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
@@ -76,7 +76,7 @@ namespace ContactsApp
         public PhoneNumber PhoneNumber
         {
             get { return _phoneNumber; }
-            set { _phoneNumber = new PhoneNumber(); }
+            set { _phoneNumber = value; }
         }
 
         /// <summary>
@@ -93,6 +93,11 @@ namespace ContactsApp
                     throw new ArgumentException(
                         "ID Vkontakte не может превышать 15 символов. Введите ID, который не превышает 15 символов");
                 }
+                //Проверка на пустую строку.
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
+                }
                 else
                     _idVk = value;
             }
@@ -101,9 +106,9 @@ namespace ContactsApp
         /// <summary>
         /// Метод, устанавливающий и возвращающий фамилию контакта.
         /// </summary>
-        public string Family
+        public string Surname
         {
-            get { return _family; }
+            get { return _surname; }
             set
             {
                 //Фамилия не может быть длиннее 50 символов.
@@ -114,10 +119,10 @@ namespace ContactsApp
                 }
 
                 //Проверка на пустую строку.
-                //if (String.IsNullOrWhiteSpace(value))
-                //{
-                //    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
-                //}
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
+                }
                 else
                 {
                     //Вся строка в нижний регистр.
@@ -132,7 +137,7 @@ namespace ContactsApp
                     //Переписываем в стринг
                     string familyString = new string(familyChar);
 
-                    _family = familyString;
+                    _surname = familyString;
                 }
             }
         }
@@ -150,6 +155,11 @@ namespace ContactsApp
                 {
                     throw new ArgumentException(
                         "Вы ввели имя, состоящее более чем из 50 символов. Введите имя, длиной до 50 символов.");
+                }
+                //Проверка на пустую строку.
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
                 }
                 else
                 {
@@ -184,6 +194,11 @@ namespace ContactsApp
                     throw new ArgumentException(
                         "Вы ввели e-mail, длиной более чем 50 символов. Введите e-mail, длиной до 50 символов.");
                 }
+                //Проверка на пустую строку.
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
+                }
                 else
                     _email = value;
             }
@@ -194,36 +209,35 @@ namespace ContactsApp
         /// </summary>
         /// <param name="phoneNumber"></param> Номер телефона контакта.
         /// <param name="name"></param> Имя контакта.
-        /// <param name="family"></param> Фамилия контакта.
+        /// <param name="surname"></param> Фамилия контакта.
         /// <param name="email"></param> E-mail контакта.
         /// <param name="dateOfBirth"></param> Дата рождения контакта.
         /// <param name="idVk"></param> ID Vk контакта.
-        public Contact(PhoneNumber phoneNumber, string name, string family, string email, DateTime dateOfBirth,
+        public Contact(PhoneNumber phoneNumber, string name, string surname, string email, DateTime dateOfBirth,
             string idVk)
         {
             PhoneNumber = phoneNumber;
             Name = name;
-            Family = family;
+            Surname = surname;
             Email = email;
             DateOfBirth = dateOfBirth;
+            IdVk = idVk;
         }
 
+        /// <summary>
+        /// Реализация клонирования
+        /// </summary>
+        /// <returns>Возвращает объект - клон контакта, с полями: номер телефона, имя, фамилия, емейл, дата рождения, айди вк.</returns>
         public object Clone()
         {
-            return new Contact(PhoneNumber, Name, Family, Email, DateOfBirth, IdVk);
+            return new Contact(PhoneNumber, Name, Surname, Email, DateOfBirth, IdVk);
         }
 
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public Contact()
-        {
-            _family = Family;
-            _name = Name;
-            _dateOfBirth = DateOfBirth;
-            _idVk = IdVk;
-            _phoneNumber = PhoneNumber;
-            _email = Email;
-
-        }
-
+        {   }
     }
 }
 
