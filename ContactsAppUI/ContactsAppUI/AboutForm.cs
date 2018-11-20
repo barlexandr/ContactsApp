@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace ContactsAppUI
 {
-    public partial class MainForm : Form
+    public partial class AboutForm : Form
     {
-        public MainForm()
+        public AboutForm()
         {
             InitializeComponent();
-        }
-
-        private void FindTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
     }
 }
