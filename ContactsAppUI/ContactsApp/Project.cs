@@ -9,6 +9,6 @@ namespace ContactsApp
     /// </summary>
     public class Project
     {
-        public List<Contact> contacts = new List<Contact>();
+        public List<Contact> contactsList = new List<Contact>();
     }
 }

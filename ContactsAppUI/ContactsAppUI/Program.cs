@@ -18,7 +18,7 @@ namespace ContactsAppUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-
+            /*
             //Создаем список контактов.
             Project project = new Project();
             //Вызываем десериализацию для списка контактов.
@@ -39,12 +39,13 @@ namespace ContactsAppUI
             Contact contactTwo = (Contact) contactOne.Clone();
 
             //Добавляем в список контактов контакт 1.
-            project.contacts.Add(contactOne);
+            project.contactsList.Add(contactOne);
             //Добавляем в список контактов контакт 2.
-            project.contacts.Add(contactTwo);
+            project.contactsList.Add(contactTwo);
 
             //Вызываем сериализацию для списка контактов.
             ProjectManager.ProjectSerialization(project);
+            */
         }
     }
 }

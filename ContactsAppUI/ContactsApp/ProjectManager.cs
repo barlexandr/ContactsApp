@@ -53,16 +53,18 @@ namespace ContactsApp
             //Экземпляр сериализатора
             JsonSerializer serializer = new JsonSerializer();
 
-            //Сделаь проверку десeриализации
-
-            //Открываем поток для чтения из файла с указанием пути
-            using (StreamReader sr = new StreamReader(stringMyDocumentsPath))
-            using (JsonReader reader = new JsonTextReader(sr))
+            //Проверка на наличие файла
+            if (!System.IO.Directory.Exists(stringMyDocumentsPath))
             {
-                //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
-                project = (Project) serializer.Deserialize<Project>(reader);
+                //Открываем поток для чтения из файла с указанием пути
+                using (StreamReader sr = new StreamReader(stringMyDocumentsPath))
+                using (JsonReader reader = new JsonTextReader(sr))
+                {
+                    //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
+                    project = (Project)serializer.Deserialize<Project>(reader);
+                }
             }
-
+       
             return project;
         }
     }

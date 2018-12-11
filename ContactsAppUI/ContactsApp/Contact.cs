@@ -37,7 +37,7 @@ namespace ContactsApp
         /// <summary>
         /// Телефонный номер контакта.
         /// </summary>
-        public PhoneNumber _phoneNumber = new PhoneNumber();
+        public PhoneNumber phoneNumber = new PhoneNumber();
 
         /// <summary>
         /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
@@ -68,15 +68,6 @@ namespace ContactsApp
                 else
                     _dateOfBirth = value;
             }
-        }
-
-        /// <summary>
-        /// Метод, устанавливающий и возвращающий номер телефона контакта.
-        /// </summary>
-        public PhoneNumber PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set { _phoneNumber = value; }
         }
 
         /// <summary>
@@ -213,10 +204,10 @@ namespace ContactsApp
         /// <param name="email"></param> E-mail контакта.
         /// <param name="dateOfBirth"></param> Дата рождения контакта.
         /// <param name="idVk"></param> ID Vk контакта.
-        public Contact(PhoneNumber phoneNumber, string name, string surname, string email, DateTime dateOfBirth,
+        public Contact(long phoneNumber, string name, string surname, string email, DateTime dateOfBirth,
             string idVk)
         {
-            PhoneNumber = phoneNumber;
+            this.phoneNumber.Number = phoneNumber;
             Name = name;
             Surname = surname;
             Email = email;
@@ -230,7 +221,7 @@ namespace ContactsApp
         /// <returns>Возвращает объект - клон контакта, с полями: номер телефона, имя, фамилия, емейл, дата рождения, айди вк.</returns>
         public object Clone()
         {
-            return new Contact(PhoneNumber, Name, Surname, Email, DateOfBirth, IdVk);
+            return new Contact(phoneNumber.Number, Name, Surname, Email, DateOfBirth, IdVk);
         }
 
         /// <summary>

@@ -31,7 +31,7 @@
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.BirthdayTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.IdVkTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,6 +53,7 @@
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(379, 20);
             this.SurnameTextBox.TabIndex = 0;
+            this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
             // 
             // NameTextBox
             // 
@@ -63,6 +64,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(379, 20);
             this.NameTextBox.TabIndex = 1;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // PhoneTextBox
             // 
@@ -73,16 +75,19 @@
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(379, 20);
             this.PhoneTextBox.TabIndex = 2;
+            this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             // 
-            // dateTimePicker1
+            // BirthdayTimePicker
             // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.BirthdayTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(80, 66);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(142, 20);
-            this.dateTimePicker1.TabIndex = 3;
+            this.BirthdayTimePicker.Location = new System.Drawing.Point(80, 66);
+            this.BirthdayTimePicker.Name = "BirthdayTimePicker";
+            this.BirthdayTimePicker.Size = new System.Drawing.Size(142, 20);
+            this.BirthdayTimePicker.TabIndex = 3;
+            this.BirthdayTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 1, 0, 0);
+            this.BirthdayTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // EmailTextBox
             // 
@@ -93,6 +98,7 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(379, 20);
             this.EmailTextBox.TabIndex = 4;
+            this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // IdVkTextBox
             // 
@@ -103,6 +109,7 @@
             this.IdVkTextBox.Name = "IdVkTextBox";
             this.IdVkTextBox.Size = new System.Drawing.Size(379, 20);
             this.IdVkTextBox.TabIndex = 5;
+            this.IdVkTextBox.TextChanged += new System.EventHandler(this.IdVkTextBox_TextChanged);
             // 
             // label1
             // 
@@ -127,9 +134,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(24, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Birthay:";
+            this.label3.Text = "Birthday:";
             // 
             // label4
             // 
@@ -167,6 +174,7 @@
             this.OkButton.TabIndex = 12;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // CancelButton
             // 
@@ -177,12 +185,12 @@
             this.CancelButton.TabIndex = 13;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // AddEditContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(479, 221);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
@@ -194,13 +202,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IdVkTextBox);
             this.Controls.Add(this.EmailTextBox);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.BirthdayTimePicker);
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.SurnameTextBox);
             this.MinimumSize = new System.Drawing.Size(495, 260);
             this.Name = "AddEditContactForm";
             this.Text = "AddEditContact";
+            this.Load += new System.EventHandler(this.AddEditContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,7 +220,7 @@
         private System.Windows.Forms.TextBox SurnameTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.TextBox PhoneTextBox;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker BirthdayTimePicker;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox IdVkTextBox;
         private System.Windows.Forms.Label label1;
