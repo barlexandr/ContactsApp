@@ -56,14 +56,14 @@ namespace ContactsApp
                 if (value < _dateMinimum)
                 {
                     throw new ArgumentException(
-                        "Вы ввели неправильную дату рождения. Введите дату, начиная с 1900 года.");
+                        "Вы ввели неправильную дату рождения.\nВведите дату, начиная с 1900 года.");
                 }
 
                 //Дата рождения не может быть больше нынешней даты.
                 if (value > DateTime.Now)
                 {
                     throw new ArgumentException(
-                        "Вы ввели неправильную дату рождения. Дата рождения не может быть больше, чем нынешняя.");
+                        "Вы ввели неправильную дату рождения.\nДата рождения не может быть больше, чем нынешняя.");
                 }
                 else
                     _dateOfBirth = value;
@@ -82,7 +82,7 @@ namespace ContactsApp
                 if (value.Length > 15)
                 {
                     throw new ArgumentException(
-                        "ID Vkontakte не может превышать 15 символов. Введите ID, который не превышает 15 символов");
+                        "ID Vkontakte не может превышать 15 символов.\nВведите ID, который не превышает 15 символов");
                 }
                 //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
@@ -106,7 +106,7 @@ namespace ContactsApp
                 if (value.Length > 50)
                 {
                     throw new ArgumentException(
-                        "Вы ввели фамилию, состоящую более чем из 50 символов. Введите фамилию, длиной до 50 символов.");
+                        "Вы ввели фамилию, состоящую более чем из 50 символов.\nВведите фамилию, длиной до 50 символов.");
                 }
 
                 //Проверка на пустую строку.
@@ -128,6 +128,7 @@ namespace ContactsApp
                     //Переписываем в стринг
                     string familyString = new string(familyChar);
 
+                    //Вносим данные.
                     _surname = familyString;
                 }
             }
@@ -145,7 +146,7 @@ namespace ContactsApp
                 if (value.Length > 50)
                 {
                     throw new ArgumentException(
-                        "Вы ввели имя, состоящее более чем из 50 символов. Введите имя, длиной до 50 символов.");
+                        "Вы ввели имя, состоящее более чем из 50 символов.\nВведите имя, длиной до 50 символов.");
                 }
                 //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
@@ -183,7 +184,7 @@ namespace ContactsApp
                 if (value.Length > 50)
                 {
                     throw new ArgumentException(
-                        "Вы ввели e-mail, длиной более чем 50 символов. Введите e-mail, длиной до 50 символов.");
+                        "Вы ввели e-mail, длиной более чем 50 символов.\nВведите e-mail, длиной до 50 символов.");
                 }
                 //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))

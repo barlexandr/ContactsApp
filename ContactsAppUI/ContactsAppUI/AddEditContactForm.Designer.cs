@@ -54,6 +54,7 @@
             this.SurnameTextBox.Size = new System.Drawing.Size(379, 20);
             this.SurnameTextBox.TabIndex = 0;
             this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
+            this.SurnameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SurnameTextBox_KeyPress);
             // 
             // NameTextBox
             // 
@@ -65,6 +66,7 @@
             this.NameTextBox.Size = new System.Drawing.Size(379, 20);
             this.NameTextBox.TabIndex = 1;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
+            this.NameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NameTextBox_KeyPress);
             // 
             // PhoneTextBox
             // 
@@ -76,6 +78,7 @@
             this.PhoneTextBox.Size = new System.Drawing.Size(379, 20);
             this.PhoneTextBox.TabIndex = 2;
             this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
+            this.PhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneTextBox_KeyPress);
             // 
             // BirthdayTimePicker
             // 
@@ -132,7 +135,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 72);
+            this.label3.Location = new System.Drawing.Point(18, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 8;
@@ -208,6 +211,7 @@
             this.Controls.Add(this.SurnameTextBox);
             this.MinimumSize = new System.Drawing.Size(495, 260);
             this.Name = "AddEditContactForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEditContact";
             this.Load += new System.EventHandler(this.AddEditContactForm_Load);
             this.ResumeLayout(false);
