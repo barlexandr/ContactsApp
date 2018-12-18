@@ -21,7 +21,7 @@ namespace ContactsAppUI
             InitializeComponent();
 
             //Выполняем десериализацию.
-            project = ProjectManager.ProjectDeserialization();
+            project = ProjectManager.ProjectDeserialization(ProjectManager._stringMyDocumentsPath);
             int countContacts = 0;
 
             //Пока количество записей в файле не равно количеству записей в ListBox.
@@ -64,7 +64,7 @@ namespace ContactsAppUI
                 ContactsListBox.Items.Add(contact.Surname);
 
                 //Выполняем сериализацию данных.
-                ProjectManager.ProjectSerialization(project);
+                ProjectManager.ProjectSerialization(project, ProjectManager._stringMyDocumentsPath);
             }
         }
 
@@ -96,7 +96,7 @@ namespace ContactsAppUI
                     ContactsListBox.Items.RemoveAt(index);
 
                     //Выполняем сериализацию данных.
-                    ProjectManager.ProjectSerialization(project);
+                    ProjectManager.ProjectSerialization(project, ProjectManager._stringMyDocumentsPath);
                 }
             }
             else
@@ -152,7 +152,7 @@ namespace ContactsAppUI
                     ContactsListBox.Items.RemoveAt(index + 1);
 
                     //Выполняем сериализацию данных.
-                    ProjectManager.ProjectSerialization(project);
+                    ProjectManager.ProjectSerialization(project, ProjectManager._stringMyDocumentsPath);
                 }
             }
             else

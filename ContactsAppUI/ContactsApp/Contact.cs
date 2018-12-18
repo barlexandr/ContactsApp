@@ -42,7 +42,7 @@ namespace ContactsApp
         /// <summary>
         /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
         /// </summary>
-        private DateTime _dateMinimum = new DateTime(1900, 01, 01);
+        private readonly DateTime _dateMinimum = new DateTime(1900, 01, 01);
 
         /// <summary>
         /// Метод, устанавливающий и возвращающий дату рождения контакта.
