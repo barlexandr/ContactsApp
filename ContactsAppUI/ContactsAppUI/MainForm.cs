@@ -21,7 +21,7 @@ namespace ContactsAppUI
             InitializeComponent();
 
             //Выполняем десериализацию.
-            project = ProjectManager.ProjectDeserialization(ProjectManager._stringMyDocumentsPath);
+            project = ProjectManager.LoadFromFile(ProjectManager.stringMyDocumentsPath);
             int countContacts = 0;
 
             //Пока количество записей в файле не равно количеству записей в ListBox.
@@ -54,17 +54,10 @@ namespace ContactsAppUI
             //Если пользователь нажал ОК, то вносим исправленные данные.
             if (resultOfDialog == DialogResult.OK)
             {
-                //Создаем переменную, в которую выполняем запись новых данных.
-                var contact = newForm.NewContact;
-
-                //Добавляем новый контакт в список.
+                var contact = newForm.Contact;
                 project.contactsList.Add(contact);
-
-                //Добавляем новый контакт в пользовательский интерфейс.
                 ContactsListBox.Items.Add(contact.Surname);
-
-                //Выполняем сериализацию данных.
-                ProjectManager.ProjectSerialization(project, ProjectManager._stringMyDocumentsPath);
+                ProjectManager.SaveToFile(project, ProjectManager.stringMyDocumentsPath);
             }
         }
 
@@ -89,14 +82,9 @@ namespace ContactsAppUI
                 var result = MessageBox.Show(removeThisContact, "Remove", MessageBoxButtons.OKCancel);
                 if (result == DialogResult.OK)
                 {
-                    //Удаляем контакт из списка.
                     project.contactsList.RemoveAt(index);
-
-                    //Удаляем контакт из пользователького интерфейса.
                     ContactsListBox.Items.RemoveAt(index);
-
-                    //Выполняем сериализацию данных.
-                    ProjectManager.ProjectSerialization(project, ProjectManager._stringMyDocumentsPath);
+                    ProjectManager.SaveToFile(project, ProjectManager.stringMyDocumentsPath);
                 }
             }
             else
@@ -120,15 +108,9 @@ namespace ContactsAppUI
             if (project.contactsList.Count > 0)
             {
                 var contactOfIndex = project.contactsList[index];
-
-                //Создаем клон редактируемого контакта.
                 Contact newCloneContact = (Contact) contactOfIndex.Clone();
-
-                //Создаем форму редактирования контакта.
                 var newForm = new AddEditContactForm();
-
-                //Заполняем форму данными объекта - клона контакта.
-                newForm.NewContact = newCloneContact;
+                newForm.Contact = newCloneContact;
 
                 //Создаем переменную, в которую помещаем результат взаимодействия пользователя с формой.
                 var resultOfDialog = newForm.ShowDialog();
@@ -136,40 +118,22 @@ namespace ContactsAppUI
                 //Если пользователь нажал ОК, то вносим исправленные данные.
                 if (resultOfDialog == DialogResult.OK)
                 {
-                    //Сохраняем новые данные в переменную со старыми.
-                    contactOfIndex = newForm.NewContact;
+                    contactOfIndex = newForm.Contact;
+                    
+                    project.contactsList.RemoveAt(index);
+                    ContactsListBox.Items.RemoveAt(index);
 
-                    //Вставляем данные в список по указанному индексу.
                     project.contactsList.Insert(index, contactOfIndex);
-
-                    //Вставляем данные в интерфейс, находящиеся по указаному индексу.
                     ContactsListBox.Items.Insert(index, contactOfIndex.Surname);
 
-                    //Удаляем сдвинутый на предыдущем шаге элемент из списка.
-                    project.contactsList.RemoveAt(index + 1);
-
-                    //Удаляем элемент, который изменили, из интерфейса.
-                    ContactsListBox.Items.RemoveAt(index + 1);
-
                     //Выполняем сериализацию данных.
-                    ProjectManager.ProjectSerialization(project, ProjectManager._stringMyDocumentsPath);
+                    ProjectManager.SaveToFile(project, ProjectManager.stringMyDocumentsPath);
                 }
             }
             else
             {
                 MessageBox.Show("Список пуст", "Edit");
             }
-        }
-
-
-        private void FindTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -197,45 +161,6 @@ namespace ContactsAppUI
         {
             //Вызываем функцию удаления контакта.
             RemoveContact();
-        }
-
-        /// <summary>
-        /// Добавление контакта по клику в выпадающем сверху меню из Edit.
-        /// </summary>
-        private void AddContactToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Вызываем функцию добавления контакта.
-            AddContact();
-        }
-
-        /// <summary>
-        /// Редактирование контакта по клику в выпадающем сверху меню из Edit.
-        /// </summary>
-        private void EditContactToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Вызываем функцию редактирования контакта.
-            EditContact();
-        }
-
-        /// <summary>
-        /// Удаление контакта по клику в выпадающем сверху меню из Edit.
-        /// </summary>
-        private void RemoveContactToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Вызываем функцию удаления контакта.
-            RemoveContact();
-        }
-
-        /// <summary>
-        /// Выпадение формы About, при клике в верхнем меню на About.
-        /// </summary>
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Создаем экземпляр формы.
-            var newForm = new AboutForm();
-
-            //Показываем созданную форму
-            newForm.Show();
         }
 
         /// <summary>
@@ -272,6 +197,49 @@ namespace ContactsAppUI
                 EmailTextBox.Text = null;
                 VkTextBox.Text = null;
             }
+        }
+
+        /// <summary>
+        /// Добавление контакта по клику в выпадающем сверху меню из Edit.
+        /// </summary>
+        private void AddContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddContact();
+        }
+
+        /// <summary>
+        /// Выпадение формы About, при клике в верхнем меню на About.
+        /// </summary>
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newForm = new AboutForm();
+            newForm.Show();
+        }
+
+        /// <summary>
+        /// Редактирование контакта по клику в выпадающем сверху меню из Edit.
+        /// </summary>
+        private void EditContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditContact();
+        }
+        
+        /// <summary>
+        /// Удаление контакта по клику в выпадающем сверху меню из Edit.
+        /// </summary>
+        private void RemoveContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveContact();
+        }
+
+        /// <summary>
+        /// Закрывает главное окно по клику в выпадающем сверху меню на Exit.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

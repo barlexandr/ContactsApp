@@ -76,7 +76,7 @@
             this.PhoneTextBox.Location = new System.Drawing.Point(80, 92);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(379, 20);
-            this.PhoneTextBox.TabIndex = 2;
+            this.PhoneTextBox.TabIndex = 3;
             this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             this.PhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneTextBox_KeyPress);
             // 
@@ -88,7 +88,7 @@
             this.BirthdayTimePicker.Location = new System.Drawing.Point(80, 66);
             this.BirthdayTimePicker.Name = "BirthdayTimePicker";
             this.BirthdayTimePicker.Size = new System.Drawing.Size(142, 20);
-            this.BirthdayTimePicker.TabIndex = 3;
+            this.BirthdayTimePicker.TabIndex = 2;
             this.BirthdayTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 1, 0, 0);
             this.BirthdayTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 

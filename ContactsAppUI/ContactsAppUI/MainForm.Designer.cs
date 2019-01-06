@@ -45,25 +45,23 @@
             this.label7 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ContactsListBox = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.RemoveContactButton = new System.Windows.Forms.Button();
+            this.EditContactButton = new System.Windows.Forms.Button();
+            this.AddContactButton = new System.Windows.Forms.Button();
+            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FindToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddContactButton = new System.Windows.Forms.Button();
-            this.EditContactButton = new System.Windows.Forms.Button();
-            this.RemoveContactButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.MenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FindTextBox
@@ -75,7 +73,6 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(174, 20);
             this.FindTextBox.TabIndex = 0;
-            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
             // label1
             // 
@@ -98,7 +95,7 @@
             this.SurnameTextBox.Location = new System.Drawing.Point(67, 7);
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.ReadOnly = true;
-            this.SurnameTextBox.Size = new System.Drawing.Size(301, 20);
+            this.SurnameTextBox.Size = new System.Drawing.Size(303, 20);
             this.SurnameTextBox.TabIndex = 2;
             // 
             // NameTextBox
@@ -110,7 +107,7 @@
             this.NameTextBox.Location = new System.Drawing.Point(67, 34);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.ReadOnly = true;
-            this.NameTextBox.Size = new System.Drawing.Size(301, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(303, 20);
             this.NameTextBox.TabIndex = 3;
             // 
             // PhoneTextBox
@@ -122,8 +119,8 @@
             this.PhoneTextBox.Location = new System.Drawing.Point(67, 87);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.ReadOnly = true;
-            this.PhoneTextBox.Size = new System.Drawing.Size(301, 20);
-            this.PhoneTextBox.TabIndex = 4;
+            this.PhoneTextBox.Size = new System.Drawing.Size(303, 20);
+            this.PhoneTextBox.TabIndex = 5;
             // 
             // EmailTextBox
             // 
@@ -134,8 +131,8 @@
             this.EmailTextBox.Location = new System.Drawing.Point(67, 113);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.ReadOnly = true;
-            this.EmailTextBox.Size = new System.Drawing.Size(301, 20);
-            this.EmailTextBox.TabIndex = 5;
+            this.EmailTextBox.Size = new System.Drawing.Size(303, 20);
+            this.EmailTextBox.TabIndex = 6;
             // 
             // VkTextBox
             // 
@@ -146,8 +143,8 @@
             this.VkTextBox.Location = new System.Drawing.Point(67, 139);
             this.VkTextBox.Name = "VkTextBox";
             this.VkTextBox.ReadOnly = true;
-            this.VkTextBox.Size = new System.Drawing.Size(301, 20);
-            this.VkTextBox.TabIndex = 6;
+            this.VkTextBox.Size = new System.Drawing.Size(303, 20);
+            this.VkTextBox.TabIndex = 7;
             // 
             // BirthdayDateTimePicker
             // 
@@ -158,8 +155,8 @@
             this.BirthdayDateTimePicker.Enabled = false;
             this.BirthdayDateTimePicker.Location = new System.Drawing.Point(67, 60);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
-            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(147, 20);
-            this.BirthdayDateTimePicker.TabIndex = 7;
+            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(149, 20);
+            this.BirthdayDateTimePicker.TabIndex = 4;
             this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 1, 0, 0);
             // 
             // label2
@@ -221,13 +218,16 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(12, 33);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 27);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.ContactsListBox);
+            this.splitContainer1.Panel1.Controls.Add(this.RemoveContactButton);
             this.splitContainer1.Panel1.Controls.Add(this.FindTextBox);
+            this.splitContainer1.Panel1.Controls.Add(this.EditContactButton);
+            this.splitContainer1.Panel1.Controls.Add(this.AddContactButton);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
@@ -244,7 +244,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.BirthdayDateTimePicker);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Size = new System.Drawing.Size(598, 319);
+            this.splitContainer1.Size = new System.Drawing.Size(600, 332);
             this.splitContainer1.SplitterDistance = 222;
             this.splitContainer1.TabIndex = 14;
             // 
@@ -256,76 +256,110 @@
             this.ContactsListBox.FormattingEnabled = true;
             this.ContactsListBox.Location = new System.Drawing.Point(3, 33);
             this.ContactsListBox.Name = "ContactsListBox";
-            this.ContactsListBox.Size = new System.Drawing.Size(210, 264);
+            this.ContactsListBox.Size = new System.Drawing.Size(210, 251);
             this.ContactsListBox.TabIndex = 2;
             this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
-            // panel1
+            // RemoveContactButton
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Location = new System.Drawing.Point(12, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(601, 28);
-            this.panel1.TabIndex = 15;
+            this.RemoveContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemoveContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveContactButton.BackgroundImage")));
+            this.RemoveContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RemoveContactButton.FlatAppearance.BorderSize = 0;
+            this.RemoveContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveContactButton.Location = new System.Drawing.Point(71, 302);
+            this.RemoveContactButton.Name = "RemoveContactButton";
+            this.RemoveContactButton.Size = new System.Drawing.Size(22, 22);
+            this.RemoveContactButton.TabIndex = 15;
+            this.RemoveContactButton.UseVisualStyleBackColor = true;
+            this.RemoveContactButton.Click += new System.EventHandler(this.RemoveContactButton_Click);
             // 
-            // menuStrip1
+            // EditContactButton
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.EditContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditContactButton.BackgroundImage")));
+            this.EditContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.EditContactButton.FlatAppearance.BorderSize = 0;
+            this.EditContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditContactButton.Location = new System.Drawing.Point(34, 302);
+            this.EditContactButton.Name = "EditContactButton";
+            this.EditContactButton.Size = new System.Drawing.Size(31, 22);
+            this.EditContactButton.TabIndex = 14;
+            this.EditContactButton.UseVisualStyleBackColor = true;
+            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
+            // 
+            // AddContactButton
+            // 
+            this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddContactButton.BackgroundImage")));
+            this.AddContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.AddContactButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.AddContactButton.FlatAppearance.BorderSize = 0;
+            this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddContactButton.Location = new System.Drawing.Point(6, 302);
+            this.AddContactButton.Name = "AddContactButton";
+            this.AddContactButton.Size = new System.Drawing.Size(22, 22);
+            this.AddContactButton.TabIndex = 13;
+            this.AddContactButton.UseVisualStyleBackColor = true;
+            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
+            // 
+            // MenuStrip1
+            // 
+            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FindToolStripMenuItem,
             this.EditToolStripMenuItem,
             this.HelpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(601, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip1.Name = "MenuStrip1";
+            this.MenuStrip1.Size = new System.Drawing.Size(624, 24);
+            this.MenuStrip1.TabIndex = 16;
+            this.MenuStrip1.Text = "menuStrip1";
             // 
             // FindToolStripMenuItem
             // 
             this.FindToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
+            this.ExitToolStripMenuItem});
             this.FindToolStripMenuItem.Name = "FindToolStripMenuItem";
             this.FindToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.FindToolStripMenuItem.Text = "File";
             // 
-            // exitToolStripMenuItem
+            // ExitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addContactToolStripMenuItem,
+            this.AddContactToolStripMenuItem,
             this.EditContactToolStripMenuItem,
-            this.removeContactToolStripMenuItem});
+            this.RemoveContactToolStripMenuItem});
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.EditToolStripMenuItem.Text = "Edit";
             // 
-            // addContactToolStripMenuItem
+            // AddContactToolStripMenuItem
             // 
-            this.addContactToolStripMenuItem.Name = "addContactToolStripMenuItem";
-            this.addContactToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addContactToolStripMenuItem.Text = "Add Contact";
-            this.addContactToolStripMenuItem.Click += new System.EventHandler(this.AddContactToolStripMenuItem_Click);
+            this.AddContactToolStripMenuItem.Name = "AddContactToolStripMenuItem";
+            this.AddContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.AddContactToolStripMenuItem.Text = "Add Contact";
+            this.AddContactToolStripMenuItem.Click += new System.EventHandler(this.AddContactToolStripMenuItem_Click);
             // 
             // EditContactToolStripMenuItem
             // 
             this.EditContactToolStripMenuItem.Name = "EditContactToolStripMenuItem";
-            this.EditContactToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.EditContactToolStripMenuItem.Text = "Edit Contact";
             this.EditContactToolStripMenuItem.Click += new System.EventHandler(this.EditContactToolStripMenuItem_Click);
             // 
-            // removeContactToolStripMenuItem
+            // RemoveContactToolStripMenuItem
             // 
-            this.removeContactToolStripMenuItem.Name = "removeContactToolStripMenuItem";
-            this.removeContactToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.removeContactToolStripMenuItem.Text = "Remove Contact";
-            this.removeContactToolStripMenuItem.Click += new System.EventHandler(this.RemoveContactToolStripMenuItem_Click);
+            this.RemoveContactToolStripMenuItem.Name = "RemoveContactToolStripMenuItem";
+            this.RemoveContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.RemoveContactToolStripMenuItem.Text = "Remove Contact";
+            this.RemoveContactToolStripMenuItem.Click += new System.EventHandler(this.RemoveContactToolStripMenuItem_Click);
             // 
             // HelpToolStripMenuItem
             // 
@@ -342,59 +376,13 @@
             this.AboutToolStripMenuItem.Text = "About";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
-            // AddContactButton
-            // 
-            this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddContactButton.BackgroundImage")));
-            this.AddContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.AddContactButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.AddContactButton.FlatAppearance.BorderSize = 0;
-            this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddContactButton.Location = new System.Drawing.Point(23, 343);
-            this.AddContactButton.Name = "AddContactButton";
-            this.AddContactButton.Size = new System.Drawing.Size(22, 22);
-            this.AddContactButton.TabIndex = 14;
-            this.AddContactButton.UseVisualStyleBackColor = true;
-            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
-            // 
-            // EditContactButton
-            // 
-            this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditContactButton.BackgroundImage")));
-            this.EditContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.EditContactButton.FlatAppearance.BorderSize = 0;
-            this.EditContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditContactButton.Location = new System.Drawing.Point(51, 343);
-            this.EditContactButton.Name = "EditContactButton";
-            this.EditContactButton.Size = new System.Drawing.Size(31, 22);
-            this.EditContactButton.TabIndex = 14;
-            this.EditContactButton.UseVisualStyleBackColor = true;
-            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
-            // 
-            // RemoveContactButton
-            // 
-            this.RemoveContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveContactButton.BackgroundImage")));
-            this.RemoveContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.RemoveContactButton.FlatAppearance.BorderSize = 0;
-            this.RemoveContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveContactButton.Location = new System.Drawing.Point(88, 343);
-            this.RemoveContactButton.Name = "RemoveContactButton";
-            this.RemoveContactButton.Size = new System.Drawing.Size(22, 22);
-            this.RemoveContactButton.TabIndex = 15;
-            this.RemoveContactButton.UseVisualStyleBackColor = true;
-            this.RemoveContactButton.Click += new System.EventHandler(this.RemoveContactButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(626, 371);
-            this.Controls.Add(this.RemoveContactButton);
-            this.Controls.Add(this.AddContactButton);
-            this.Controls.Add(this.EditContactButton);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(624, 371);
+            this.Controls.Add(this.MenuStrip1);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(640, 410);
             this.Name = "MainForm";
@@ -406,11 +394,10 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.MenuStrip1.ResumeLayout(false);
+            this.MenuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -431,19 +418,18 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem FindToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
         private System.Windows.Forms.ListBox ContactsListBox;
         private System.Windows.Forms.Button AddContactButton;
         private System.Windows.Forms.Button RemoveContactButton;
         private System.Windows.Forms.Button EditContactButton;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addContactToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip MenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem FindToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditContactToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeContactToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RemoveContactToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
     }
 }

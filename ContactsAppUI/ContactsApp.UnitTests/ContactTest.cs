@@ -154,47 +154,12 @@ namespace ContactsApp.UnitTests
                 message);
         }
 
-        [TestCase("1980, 01, 01", "Геттер dateOfBirth возвращает неверное имя",
+        [TestCase("1980, 01, 01", "Геттер dateOfBirth возвращает неверное значение",
             TestName = "Возвращение геттером dateOfBirth")]
         public void TestDateOfBirthGet_CorrectArgument(string correctDateOfBirth, string message)
         {
             _contact.DateOfBirth = DateTime.Parse(correctDateOfBirth);
             Assert.AreEqual(DateTime.Parse(correctDateOfBirth), _contact.DateOfBirth,
-                message);
-        }
-
-        //Тесты вызова свойства Number класса PhoneNumber.
-        [TestCase("11111111111", "Должно возникать исключение, если номер начинается не с 7",
-            TestName = "Присвоение number номера телефона, начинающегося не с 7")]
-        [TestCase("123456789123", "Должно возникать исключение, если введенный номер длиннее 11 символов",
-            TestName = "Присвоение number номера телефона, который длиннее 11 символов")]
-        [TestCase("1234567891", "Должно возникать исключение, если введенный номер короче 11 символов",
-            TestName = "Присвоение number номера телефона, который короче 11 символов")]
-        [TestCase("", "Должно возникать исключение, если поле phone - пустая строка",
-            Ignore = "Видимо ошибка преобразования пустой строки в лонг",
-            TestName = "Присвоение пустой строки в качестве поля phone")]
-        public void TestPhoneNumberSet_ArgumentException(string wrongPhoneNumber, string message)
-        {
-            Assert.Throws<ArgumentException>(
-                () => { _contact.phoneNumber.Number = Convert.ToInt64(wrongPhoneNumber); },
-                message);
-        }
-
-        [TestCase("79998887766", "Тест не пройден, фамилия присваивается неверно",
-            TestName = "Присвоение правильного номера телефона.")]
-        public void TestPhoneNumberSet_CorrectArgument(string correctNumber, string message)
-        {
-            _contact.phoneNumber.Number = Convert.ToInt64(correctNumber);
-            Assert.AreEqual(Convert.ToInt64(correctNumber), _contact.phoneNumber.Number,
-                message);
-        }
-
-        [TestCase("76665554433", "Геттер phone, возвращает неверный номер телефона",
-            TestName = "Возвращение геттером номера телефона")]
-        public void TestPhoneNumberGet_CorrectArgument(string correctNumber, string message)
-        {
-            _contact.phoneNumber.Number = Convert.ToInt64(correctNumber);
-            Assert.AreEqual(Convert.ToInt64(correctNumber), _contact.phoneNumber.Number,
                 message);
         }
     }
