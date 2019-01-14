@@ -34,12 +34,6 @@ namespace ContactsApp
                     throw new ArgumentException("Вы ввели меньше 11 цифр, введите номер, состоящий из 11 цифр.");
                 }
 
-                //Проверка на пустую строку
-                if (String.IsNullOrWhiteSpace(value.ToString()))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
-                }
-
                 //Иначе присваиваем переменной номер.
                 else
                 {
