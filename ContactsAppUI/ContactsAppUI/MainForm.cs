@@ -59,14 +59,14 @@ namespace ContactsAppUI
             {
                 var contact = newForm.Contact;
                 _project.contactsList.Add(contact);
-                //ContactsListBox.Items.Add(contact.Surname);
-
-                _project=Project.Sort(_project);
-
+               
                 for (int i = 0; i != _project.contactsList.Count - 1; i++)
                 {
                     ContactsListBox.Items.RemoveAt(0);
                 }
+
+                _project = Project.Sort(_project);
+
                 for (int j = 0; j != _project.contactsList.Count; j++)
                 {
                     ContactsListBox.Items.Add(_project.contactsList[j].Surname);
@@ -82,12 +82,7 @@ namespace ContactsAppUI
         private void RemoveContact()
         {
             var index = ContactsListBox.SelectedIndex;
-
-            if (index == -1)
-            {
-                MessageBox.Show("Выберите запись для удаления.");
-            }
-
+            
             //Если список не пуст.
             if (_project.contactsList.Count > 0)
             {
@@ -104,7 +99,7 @@ namespace ContactsAppUI
             }
             else
             {
-                MessageBox.Show("Список пуст.", "Remove");
+                MessageBox.Show("Выберите запись для удаления.", "Remove");
             }
         }
 
@@ -114,11 +109,7 @@ namespace ContactsAppUI
         private void EditContact()
         {
             var index = ContactsListBox.SelectedIndex;
-            if (index == -1)
-            {
-                MessageBox.Show("Выберите запись для редактирования.");
-            }
-
+           
             //Если список не пуст.
             if (_project.contactsList.Count > 0)
             {
@@ -140,12 +131,14 @@ namespace ContactsAppUI
 
                     _project.contactsList.Insert(index, contactOfIndex);
                     ContactsListBox.Items.Insert(index, contactOfIndex.Surname);
-
-                    _project = Project.Sort(_project);
+                    
                     for (int i = 0; i != _project.contactsList.Count; i++)
                     {
                         ContactsListBox.Items.RemoveAt(0);
                     }
+
+                    _project = Project.Sort(_project);
+
                     for (int j = 0; j != _project.contactsList.Count; j++)
                     {
                         ContactsListBox.Items.Add(_project.contactsList[j].Surname);
@@ -157,7 +150,7 @@ namespace ContactsAppUI
             }
             else
             {
-                MessageBox.Show("Список пуст", "Edit");
+                MessageBox.Show("Выберите запись для редактирования.", "Edit");
             }
         }
 
@@ -260,8 +253,6 @@ namespace ContactsAppUI
         /// <summary>
         /// Закрывает главное окно по клику в выпадающем сверху меню на Exit.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();

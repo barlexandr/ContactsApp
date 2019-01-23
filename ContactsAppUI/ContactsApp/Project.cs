@@ -26,26 +26,19 @@ namespace ContactsApp
             //Добавляем 0 элемент несортированного списка в сортированный.
             sortedProject.contactsList.Add(project.contactsList[0]);
 
-
             for (int i = 1; i < project.contactsList.Count; i++)
             {
-                //Если фамилия из сортированного списка меньше фамилии из несортированного списка, то вставляем несортированную фамилию после.
-                if (sortedProject.contactsList[i - 1].Surname[0] < project.contactsList[i].Surname[0])
-                {
-                    sortedProject.contactsList.Insert(i, project.contactsList[i]);
-                    continue;
-                }
-
-                //Если фамилии равны, то вставляем несортированную фамилию после сортированной.
-                if (sortedProject.contactsList[i - 1] == project.contactsList[i])
+                //Если фамилия из сортированного списка меньше или равна фамилии из несортированного списка, то вставляем несортированную фамилию после.
+                if (sortedProject.contactsList[i - 1].Surname[0] < project.contactsList[i].Surname[0] ||
+                    sortedProject.contactsList[i - 1] == project.contactsList[i]) 
                 {
                     sortedProject.contactsList.Insert(i, project.contactsList[i]);
                     continue;
                 }
 
                 int j = i;
-                //int index = 1;
-
+                
+                //Флаг, разрешающий присвоение (true - пока не было добавлено элементов в сортированный список).
                 bool flag = true;
 
                 //Пока 1 символ отсортированной фамилии больше или равен 1 символа не сортированной
@@ -57,69 +50,167 @@ namespace ContactsApp
                         return sortedProject;
                     }
 
-                    //if (sortedProject.contactsList[j - 1] == project.contactsList[i])
-                    //{
-                    //    j--;
-                    //    continue;
-                    //}
+                    //Находим длину самой короткой фамилии.
+                    int countSubmolSurname = project.contactsList[i].Surname.Length >=
+                                             sortedProject.contactsList[j - 1].Surname.Length
+                        ? sortedProject.contactsList[j - 1].Surname.Length - 1
+                        : project.contactsList[i].Surname.Length - 1;
 
-                    //Если первые символы фамилий равны
+                    //Если первые символы фамилий равны.
                     if (sortedProject.contactsList[j - 1].Surname[0] == project.contactsList[i].Surname[0])
                     {
-                        //Находим длину самой короткой фамилии
-                        int countSubmolSurname = project.contactsList[i].Surname.Length >=
-                                                 sortedProject.contactsList[j - 1].Surname.Length
-                            ? sortedProject.contactsList[j - 1].Surname.Length
-                            : project.contactsList[i].Surname.Length;
-
-                        //Выполняем сравнение остальных
-                        //for (int k = 1; k < countSubmolSurname; k++)
-                        //{
-                        int k = 1;
-                        //Пока символ сортированной фамилии меньше соответствующего символа несортированной.
-                        while (sortedProject.contactsList[j - 1].Surname[k] == project.contactsList[i].Surname[k]) ////////////////////////////////////////////////////
+                        //Флаг true, если перепрыгнули фамилию, которая начинается с той же буквы.
+                        bool flagJump = false;
+                        while (j != 1 && sortedProject.contactsList[j - 1].Surname[0] ==
+                               project.contactsList[i].Surname[0] && flag == true) 
                         {
-                            //index = i;
-                            k++;
-                            if (k==countSubmolSurname)
+                            //Переменная для перебора символов фамилии.
+                            int g = 1;
+                            while (sortedProject.contactsList[j - 1].Surname[g] == project.contactsList[i].Surname[g] &&
+                                   flag == true) 
                             {
+                                g++;
+
+                                //Если g больше количества символов в фамилии, то фамилия в project является подстрокой фамилии sorted.
+                                if (g > countSubmolSurname)
+                                {
+                                    if (sortedProject.contactsList[j - 1].Surname == project.contactsList[i].Surname)
+                                    {
+                                        sortedProject.contactsList.Insert(j, project.contactsList[i]);
+                                        flag = false;
+                                        g = 1;
+                                        continue;
+                                    }
+
+                                    //Если не конец списка, то проверяем со следующим элементом списка.
+                                    if (j != 1 && flag == true)
+                                    {
+                                        j--;
+                                        countSubmolSurname = project.contactsList[i].Surname.Length >=
+                                                             sortedProject.contactsList[j - 1].Surname.Length
+                                            ? sortedProject.contactsList[j - 1].Surname.Length - 1
+                                            : project.contactsList[i].Surname.Length - 1;
+
+                                        //Проверяем содержится ли подстрока 
+                                        int entry = sortedProject.contactsList[j-1].Surname
+                                            .IndexOf(project.contactsList[i].Surname);
+
+                                        //Если в следующем элементе списка не содержится подстрока, то вставляем после этого элемента.
+                                        if (entry == -1) 
+                                        {
+                                            sortedProject.contactsList.Insert(j+1, project.contactsList[i]);
+                                            flag = false;
+                                        }
+
+
+                                        g = 1;
+                                        continue;
+                                    }
+
+                                    //Если j=1, то проверяли с 0 элементом сортированного списка и нужно вставить фамилию на 0 элемент.
+                                    else
+                                    {
+                                        sortedProject.contactsList.Insert(0, project.contactsList[i]);
+                                        flag = false;
+                                        g = 1;
+                                        continue;
+                                    }
+                                }
+                            }
+
+                            //Если в сортированном списке соответствующий символ меньше, то добавляем после сортированного элемента.
+                            if (sortedProject.contactsList[j - 1].Surname[g] < project.contactsList[i].Surname[g] &&
+                                flag == true) 
+                            {
+                                sortedProject.contactsList.Insert(j, project.contactsList[i]);
+                                flag = false;
                                 continue;
                             }
-                            //break;
+
+                            else if (flag == true) 
+                            {
+                                j--;
+                                countSubmolSurname = project.contactsList[i].Surname.Length >=
+                                                     sortedProject.contactsList[j - 1].Surname.Length
+                                    ? sortedProject.contactsList[j - 1].Surname.Length - 1
+                                    : project.contactsList[i].Surname.Length - 1;
+                                if (sortedProject.contactsList[j - 1].Surname[0] != project.contactsList[i].Surname[0])
+                                {
+                                    flagJump = true;
+                                }
+                            }
                         }
 
-                        if (sortedProject.contactsList[j - 1].Surname[k] < project.contactsList[i].Surname[k])
+                        //Если перепрыгнули фамилию с одинаковой 1 буквой.
+                        if (flagJump == true)
+                        {
+                            sortedProject.contactsList.Insert(j, project.contactsList[i]);
+                            flag = false;
+                            continue;
+                        }
+                       
+                        int k = 1;
+
+                        //Пока символ сортированной фамилии равен соответствующему символу несортированной.
+                        while (sortedProject.contactsList[j - 1].Surname[k] == project.contactsList[i].Surname[k] &&
+                               flag == true) 
+                        {
+                            k++;
+                            if (k == countSubmolSurname) 
+                            {
+                                break;
+                            }
+
+                            if (k > countSubmolSurname)
+                            {
+                                k--;
+                                break;
+                            }
+                        }
+
+                        if (sortedProject.contactsList[j - 1].Surname[k] < project.contactsList[i].Surname[k] &&
+                            flag == true) 
                         {
                             sortedProject.contactsList.Insert(j, project.contactsList[i]);
                             flag = false;
                             continue;
                         }
 
-                        else
+                        else if (flag == true)
                         {
-                            sortedProject.contactsList.Insert(j - 1, project.contactsList[i]);
-                            flag = false;
-                            continue;
-                        }
+                            int entry = project.contactsList[i].Surname
+                                .IndexOf(sortedProject.contactsList[j - 1].Surname);
 
-                        //if (j == 1)
-                        //{
-                        //    sortedProject.contactsList.Insert(0, project.contactsList[index]);
-                        //    continue;
-                        //}
-                        //else
-                        //{
-                        //    sortedProject.contactsList.Insert(j - 2, project.contactsList[index]);
-                        //    continue;
-                        //}
+                            if (entry == 0)
+                            {
+                                sortedProject.contactsList.Insert(j, project.contactsList[i]);
+                                flag = false;
+                                continue;
+                            }
+
+                            else
+                            {
+                                sortedProject.contactsList.Insert(j - 1, project.contactsList[i]);
+                                flag = false;
+                                continue;
+                            }
+                            
+                        }
                     }
 
-                    if (j == 1)
+                    if (sortedProject.contactsList[j - 1].Surname[0] > project.contactsList[i].Surname[0] &&
+                        flag == true) 
+                    {
+                        j--;
+                        continue;
+                    }
+
+                    if (j == 1 && flag == true) 
                     {
                         sortedProject.contactsList.Insert(0, project.contactsList[i]);
                         continue;
                     }
-                    else
+                    else if (flag == true) 
                     {
                         sortedProject.contactsList.Insert(j-1, project.contactsList[i]);
                         continue;
@@ -128,7 +219,10 @@ namespace ContactsApp
                     j--;
                 }
 
-                //sortedProject.contactsList.Insert(j, project.contactsList[i]);
+                if (flag == true)
+                {
+                    sortedProject.contactsList.Insert(j, project.contactsList[i]);
+                }
             }
 
             return sortedProject;

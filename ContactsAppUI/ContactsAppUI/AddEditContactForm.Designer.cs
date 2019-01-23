@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditContactForm));
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
@@ -209,6 +210,7 @@
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.SurnameTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(495, 260);
             this.Name = "AddEditContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
