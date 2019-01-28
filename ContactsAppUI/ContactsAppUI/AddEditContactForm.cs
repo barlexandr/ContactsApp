@@ -391,8 +391,8 @@ namespace ContactsAppUI
                 i++;
             }
 
-            //Ограничение на ввод 15 символов.
-            PhoneTextBox.MaxLength = 15;
+            //Ограничение на ввод 11 символов.
+            PhoneTextBox.MaxLength = 11;
         }
     }
 }
